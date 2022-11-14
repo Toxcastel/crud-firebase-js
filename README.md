@@ -7,10 +7,14 @@ It only runs with live server
 
 1. Basic config
 
- - By creating a basic HTML form, at the end of the body tag we'll add type="module" so we can use it as a module where we export and import functions.
- - firebase.js file will have the basic config from the firebase documentation
+    - By creating a basic HTML form, at the end of the body tag we'll add type="module" so we can use it as a module where we export and import functions.
+    - firebase.js file will have the basic config from the firebase documentation
 
 2. Firestore config
 
- - At index.js we'll start by adding an eventListener that will take the values from title and description and use the function saveTask imported from our firebase.js
- - Firebase.js has the basic configuration of our database, which was imported as CDN
+    - At index.js we'll start by adding an eventListener that will take the values from title and description and use the function saveTask imported from our firebase.js
+    - Firebase.js has the basic configuration of our database, which was imported as CDN
+
+3. Snapshot
+
+    - We'll use firestore onSnapshot to reload things from database when something happens
