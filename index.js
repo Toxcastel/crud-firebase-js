@@ -1,17 +1,19 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyBoaJ1jESh-QM0itWUJoNCBbnZzvkDyyB0",
-    authDomain: "crud-firebase-js-e813f.firebaseapp.com",
-    projectId: "crud-firebase-js-e813f",
-    storageBucket: "crud-firebase-js-e813f.appspot.com",
-    messagingSenderId: "655588852855",
-    appId: "1:655588852855:web:71cb56be5aab58fc1d7272",
-};
+import {saveTask} from './firebase.js'
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// initialize app
+window.addEventListener('DOMContentLoaded', () => {
+
+});
+
+const taskForm = document.getElementById('task-form')
+
+taskForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const title = taskForm['task-title']
+    const description = taskForm['task-description']
+
+    saveTask(title.value, description.value)
+
+})
