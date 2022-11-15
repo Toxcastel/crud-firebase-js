@@ -1,7 +1,17 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
 // Import firestore for database
-import { collection, getFirestore, addDoc, getDocs, onSnapshot, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+import {
+    collection,
+    getFirestore,
+    addDoc,
+    getDocs,
+    onSnapshot,
+    deleteDoc,
+    doc,
+    getDoc,
+    updateDoc,
+} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
 // Nota: "onSnapshot" significa "cuando los datos cambien"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -25,8 +35,12 @@ const db = getFirestore();
 // create task
 export const saveTask = (title, description) => addDoc(collection(db, "tasks"), { title, description });
 // get tasks
-export const getTasks = () => getDocs(collection(db, 'tasks'))
+export const getTasks = () => getDocs(collection(db, "tasks"));
+// get task
+export const getTask = (id) => getDoc(doc(db, "tasks", id));
 // firebase onSnapshot
-export const onGetTasks = (callback) => onSnapshot(collection(db, 'tasks'), callback)
+export const onGetTasks = (callback) => onSnapshot(collection(db, "tasks"), callback);
 // firebase delete
-export const deleteTask = (id) => deleteDoc(doc(db, "tasks", id))
+export const deleteTask = (id) => deleteDoc(doc(db, "tasks", id));
+// firebase update
+export const updateTask = (id, newFields) => updateDoc(doc(db, "tasks", id), newFields);
