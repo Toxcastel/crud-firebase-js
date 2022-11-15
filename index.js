@@ -12,12 +12,19 @@ window.addEventListener("DOMContentLoaded", async () => {
         <div>
             <h3>${task.title}</h3>
             <p>${task.description}</p>
+            <button class='btn-delete'>Delete</button>
         </div>`;
         });
         tasksContainer.innerHTML = html;
-    });
 
-    
+        const btnsDelete = tasksContainer.querySelectorAll('.btn-delete')
+
+        btnsDelete.forEach(btn => {
+            btn.addEventListener('click', () => {
+                console.log('deleting')
+            })
+        })
+    });
 });
 
 taskForm.addEventListener("submit", (e) => {

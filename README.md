@@ -18,3 +18,7 @@ It only runs with live server
 3. Snapshot
 
     - We'll use firestore onSnapshot to reload things from database when something happens
+
+4. Delete
+
+    - Create a Delete button for the HTML tasksContainer
