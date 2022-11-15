@@ -1,4 +1,4 @@
-import { saveTask, getTasks, onGetTasks } from "./firebase.js";
+import { saveTask, getTasks, onGetTasks, deleteTask } from "./firebase.js";
 
 const taskForm = document.getElementById("task-form");
 const tasksContainer = document.getElementById("tasks-container");
@@ -12,12 +12,20 @@ window.addEventListener("DOMContentLoaded", async () => {
         <div>
             <h3>${task.title}</h3>
             <p>${task.description}</p>
+            <button class='btn-delete' data-id="${doc.id}">Delete</button>
         </div>`;
         });
         tasksContainer.innerHTML = html;
-    });
 
-    
+        const btnsDelete = tasksContainer.querySelectorAll('.btn-delete')
+
+        btnsDelete.forEach(btn => {
+            btn.addEventListener('click', ({target: {dataset}}) => {
+                // forma compacta de escribir event.target.dataset -> {target: {dataset}} "destructurado"
+                deleteTask(dataset.id)
+            })
+        })
+    });
 });
 
 taskForm.addEventListener("submit", (e) => {

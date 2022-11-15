@@ -18,3 +18,9 @@ It only runs with live server
 3. Snapshot
 
     - We'll use firestore onSnapshot to reload things from database when something happens
+
+4. Delete
+
+    - Create a Delete button for the HTML tasksContainer
+        - For HTML tags there's a code syntax we can use, or rather an attribute to gather data afer. In this case I'm using data-id="${code}" === dataset-key="property" so I can collect specific data with javascript, which will be doc.id() (id for each task stored in firebase). That data will be stored in 'dataset' with the key 'id' in this case.
+    - We don't want the button to delete the collection, we just want to delete a 'doc'.
