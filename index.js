@@ -7,19 +7,23 @@ let editStatus = false;
 let id = "";
 
 window.addEventListener("DOMContentLoaded", async () => {
+    
     onGetTasks((querySnapshot) => {
-        let html = "";
+        tasksContainer.innerHTML = "";
         querySnapshot.forEach((doc) => {
+            
             const task = doc.data();
-            html += `
-        <div>
-            <h3>${task.title}</h3>
+            // ojo: es recomendable crear elementos html con dom para evitar ataques cros site scripting
+            tasksContainer.innerHTML += `
+        <div class="card card-body mt-2 border-primary">
+            <h3 class="h5">${task.title}</h3>
             <p>${task.description}</p>
-            <button class='btn-delete' data-id="${doc.id}">Delete</button>
-            <button class='btn-edit' data-id="${doc.id}">Edit</button>
+            <div class="d-flex">
+            <button class='btn btn-primary btn-delete' data-id="${doc.id}">Delete</button>
+            <button class='btn btn-secondary btn-edit' data-id="${doc.id}">Edit</button>
+            </div>
         </div>`;
         });
-        tasksContainer.innerHTML = html;
 
         const btnsDelete = tasksContainer.querySelectorAll(".btn-delete");
 
