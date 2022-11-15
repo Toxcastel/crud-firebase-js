@@ -31,3 +31,6 @@ It only runs with live server
     - The fields are filled with task information
     - Define some global variables like editStatus and id
     - Create conditions on submit for update and save
+
+6. Styling with bootswatch
+
